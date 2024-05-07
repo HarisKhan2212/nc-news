@@ -9,7 +9,6 @@ function ArticleList() {
     useEffect(() => {
       fetchAllArticles()
         .then((articles) => {
-          // Sort articles by date in descending order
           const sortedArticles = articles.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
           setArticleList(sortedArticles);
         })
