@@ -4,15 +4,19 @@ import { Link } from "react-router-dom";
 
 function ArticleList() {
     const [articleList, setArticleList] = useState([]);
+    const [loading, setLoading] = useState(true)
   
     useEffect(() => {
       fetchAllArticles()
         .then((articles) => {
           const sortedArticles = articles.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
           setArticleList(sortedArticles)
+          setLoading(false)
         })
     }, [])
-  
+    if (loading) {
+      return <div>Loading...</div>
+    }
     return (
       <div id="article-list">
         {articleList.map((article, index) => (
