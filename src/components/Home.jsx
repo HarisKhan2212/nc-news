@@ -1,5 +1,5 @@
 
-import ArticleList from "./Article.jsx";
+import ArticleList from "./ArticleList.jsx";
 
 function Home() {
     return <ArticleList />
