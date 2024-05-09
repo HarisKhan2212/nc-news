@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { fetchArticleById } from "../utils/endpoints";
+import Comments from "./Comments";
 
 function ArticleSingle(){
 
@@ -21,10 +22,12 @@ function ArticleSingle(){
 
     return (
         <div id="article">
-            <h1><u>{articleData.article.title}</u></h1>
+            <h2><u>{articleData.article.title}</u></h2>
             <p>{articleData.article.author}</p>
             <img src={articleData.article.article_img_url} alt="" />
             <p>{articleData.article.body}</p>
+            <Comments article_id={article_id}>
+            </Comments>
         </div>
     )
 }
