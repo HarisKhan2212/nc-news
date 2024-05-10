@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { fetchArticleById, patchArticleVote } from "../utils/endpoints";
 import Comments from "./Comments";
+import PostArticleComment from "./PostArticleComment";
 
 function ArticleSingle(){
 
@@ -18,7 +19,7 @@ function ArticleSingle(){
             setVotes(article.article.votes)
         })
         .catch((error) => {
-            setErr("Error fetching article data.")
+            setErr("Error fetching article data")
             console.error(error)
         });
     }, [article_id])
@@ -43,7 +44,7 @@ function ArticleSingle(){
     return (
         <div id="article">
             <h2><u>{articleData.article.title}</u></h2>
-            <p>{articleData.article.author}</p>
+            <p><b>Author: {articleData.article.author}</b></p>
             <img src={articleData.article.article_img_url} alt="" />
             <p>{articleData.article.body}</p>
             <p>{votes + voteChange}</p>
@@ -51,6 +52,7 @@ function ArticleSingle(){
                 <button disabled={voteChange === 1} onClick={() => handleVote(1)}>Upvote</button>
                 <button disabled={voteChange === -1} onClick={() => handleVote(-1)}>Downvote</button>
             </div>
+            <PostArticleComment />
             <Comments article_id={article_id} />
         </div>
     )
