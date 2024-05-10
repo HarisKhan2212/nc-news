@@ -20,7 +20,7 @@ function fetchArticleById(articleId){
         })
     }
 
-    function fetchComments(articleId){
+function fetchComments(articleId){
 
         return axios.get(`https://backend-project-2yjd.onrender.com/api/articles/${articleId}/comments`).then((response) => {
             return response.data.comments
@@ -29,8 +29,14 @@ function fetchArticleById(articleId){
             console.log(err);
         })
     }
+    function patchArticleVote(article_id, vote) {
+        return axios.patch(
+            `https://backend-project-2yjd.onrender.com/api/articles/${article_id}`, 
+            { inc_votes: vote }
+        );
+    }
+    
 
 
 
-
-export {fetchAllArticles, fetchArticleById, fetchComments}
+export {fetchAllArticles, fetchArticleById, fetchComments, patchArticleVote}
