@@ -55,5 +55,4 @@ function ArticleSingle(){
         </div>
     )
 }
-
 export default ArticleSingle;
