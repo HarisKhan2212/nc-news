@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { fetchArticleById, patchArticleVote } from "../utils/endpoints";
 import Comments from "./Comments";
-import PostArticleComment from "./PostArticleComment";
+import CommentForm from "./CommentForm";
 
 function ArticleSingle(){
 
@@ -11,6 +11,7 @@ function ArticleSingle(){
     const [votes, setVotes] = useState(0)
     const [voteChange, setVoteChange] = useState(0)
     const [err, setErr] = useState(null)
+    const [refreshComments, setRefreshComments] = useState(false);
 
     useEffect(() => {
         fetchArticleById(article_id)
@@ -52,8 +53,8 @@ function ArticleSingle(){
                 <button disabled={voteChange === 1} onClick={() => handleVote(1)}>Upvote</button>
                 <button disabled={voteChange === -1} onClick={() => handleVote(-1)}>Downvote</button>
             </div>
-            <PostArticleComment />
-            <Comments article_id={article_id} />
+            <CommentForm articleId={article_id} setRefreshComments={setRefreshComments} />
+            <Comments article_id={article_id} refreshComments={refreshComments} />
         </div>
     )
 }
