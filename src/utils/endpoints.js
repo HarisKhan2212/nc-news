@@ -39,7 +39,7 @@ function patchArticleVote(article_id, vote) {
     }
 
 function postArticleComment(articleId, author, body){
-    return axios.post(`https://backend-project-2yjd.onrender.com/api/articles${articleId}/comments`, {
+    return axios.post(`https://backend-project-2yjd.onrender.com/api/articles/${articleId}/comments`, {
         "username": author, "body": body
         }).then((response) => {
         return response
