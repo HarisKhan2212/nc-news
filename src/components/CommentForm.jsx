@@ -8,7 +8,7 @@ export default function CommentForm({ articleId, setRefreshComments }) {
     const author = "jessjelly";
     const [commentInput, setCommentInput] = useState("");
 
-    function handleSubmit() {
+    function handlePost() {
         if (!commentInput.length) {
             setError('A comment cannot be empty.')
             return;
@@ -30,6 +30,8 @@ export default function CommentForm({ articleId, setRefreshComments }) {
         });
     }
 
+
+
     function handleInputChange(event) {
         setCommentInput(event.target.value);
     }
@@ -49,7 +51,7 @@ export default function CommentForm({ articleId, setRefreshComments }) {
                     onChange={handleInputChange}
                 ></textarea>
             </p>
-            <button disabled={isloading | !commentInput.length} onClick={handleSubmit}>Submit</button>
+            <button disabled={isloading | !commentInput.length} onClick={handlePost}>Submit</button>
         </div>
     );
 }
