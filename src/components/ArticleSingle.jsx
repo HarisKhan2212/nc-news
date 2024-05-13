@@ -4,7 +4,7 @@ import { fetchArticleById, patchArticleVote } from "../utils/endpoints";
 import Comments from "./Comments";
 import CommentForm from "./CommentForm";
 
-function ArticleSingle(){
+function ArticleSingle({currentUser}){
 
     const { article_id } = useParams()
     const [articleData, setArticleData] = useState({ article: {} })
@@ -54,7 +54,7 @@ function ArticleSingle(){
                 <button disabled={voteChange === -1} onClick={() => handleVote(-1)}>Downvote</button>
             </div>
             <CommentForm articleId={article_id} setRefreshComments={setRefreshComments} />
-            <Comments article_id={article_id} refreshComments={refreshComments} />
+            <Comments article_id={article_id} refreshComments={refreshComments} currentUser={currentUser} setRefreshComments={setRefreshComments} />
         </div>
     )
 }

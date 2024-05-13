@@ -49,9 +49,14 @@ function postArticleComment(articleId, author, body){
     })
 }
 
-
+function deleteArticleComment(article_id, username) {
+    return axios.delete(
+        `https://backend-project-2yjd.onrender.com/api/articles/${article_id}`, 
+        
+        )
+    }
     
 
 
 
-export {fetchAllArticles, fetchArticleById, fetchComments, patchArticleVote, postArticleComment}
+export {fetchAllArticles, fetchArticleById, fetchComments, patchArticleVote, postArticleComment, deleteArticleComment}
